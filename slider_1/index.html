@@ -1,0 +1,34 @@
+<html>
+	<head>
+		<link href='css/w3.css' rel="stylesheet" />
+		<style>
+			#SLIDER_1>img{
+				width:100%;
+			}
+		</style>
+		<script src="js/jquery.js"></script>
+		<script>
+			var IMG_INDEX = 1;
+			function SLIDE_IMAGE(){
+				$( `#SLIDER_1>img` ).slideUp(500, function(){
+					$( `#SLIDER_1>img:nth-child(${IMG_INDEX})` ).fadeIn(500);
+					if( IMG_INDEX==4 )
+						IMG_INDEX=1;
+					else
+						IMG_INDEX++;
+				});
+			}
+			setInterval( SLIDE_IMAGE, 4000 );
+		</script>
+	</head>
+	<body class="txt-font-sans">
+		<div class="w3-content w3-display-container" id="SLIDER_1">
+			<img src="images/bg1.jpg" />
+			<img src="images/bg2.jpg" class="w3-display-middle" />
+			<img src="images/bg3.jpg" class="w3-display-middle" />
+			<img src="images/bg4.jpg" class="w3-display-middle" />
+			<button class="w3-display-left w3-jumbo w3-button w3-red">&lt;</button>
+			<button class="w3-display-right w3-jumbo w3-button w3-red ">&gt;</button>
+		</div>
+	</body>
+</html>
