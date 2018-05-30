@@ -1,34 +1,80 @@
 <html>
 	<head>
-		<link href='css/w3.css' rel="stylesheet" />
+		<link href="css/w3.css" rel="stylesheet" />
+		<script src="js/jquery.js"></script>
 		<style>
-			#SLIDER_1>img{
+			.w3-display-container{
+				max-width:800px;
+			}
+			.mySlides{
 				width:100%;
+				display:none;
+			}
+			.active{
+				display:block;
+			}
+			.w3-badge{
+				height:13px;
+				width:13px;
+				padding:0px;
 			}
 		</style>
-		<script src="js/jquery.js"></script>
+	</head>
+	<body>
+		<div class="w3-content w3-display-container w3-light-gray">
+			<img src="images/bg1.jpg" class="mySlides active" />
+			<img src="images/bg2.jpg" class="mySlides" />
+			<img src="images/bg3.jpg" class="mySlides" />
+			<img src="images/bg4.jpg" class="mySlides" />
+			<button class="w3-display-left w3-text-white w3-large w3-button prev">&lt;</button>
+			<button class="w3-display-right w3-text-white w3-large w3-button next">&gt;</button>
+			<div class="w3-display-bottommiddle w3-center" style="width:100%;">
+				<span class="w3-badge demo w3-border w3-transparent w3-hover-white w3-white" SLIDE_TO='1'></span>
+				<span class="w3-badge demo w3-border w3-transparent w3-hover-white" SLIDE_TO='2'></span>
+				<span class="w3-badge demo w3-border w3-transparent w3-hover-white" SLIDE_TO='3'></span>
+				<span class="w3-badge demo w3-border w3-transparent w3-hover-white" SLIDE_TO='4'></span>
+			</div>
+		</div>
+		
 		<script>
-			var IMG_INDEX = 1;
+			var IMG_IND = 2;
+			var TIMER = setTimeout( SLIDE_IMAGE, 4000 );
 			function SLIDE_IMAGE(){
-				$( `#SLIDER_1>img` ).slideUp(500, function(){
-					$( `#SLIDER_1>img:nth-child(${IMG_INDEX})` ).fadeIn(500);
-					if( IMG_INDEX==4 )
-						IMG_INDEX=1;
+				console.log( IMG_IND );
+				clearInterval( TIMER );
+				$(".mySlides").fadeOut().promise().done(function(){
+					$(`.mySlides:nth-child(${IMG_IND})`).fadeIn();
+					$(`.demo`).removeClass( "w3-white" );
+					$(`.demo:nth-of-type(${IMG_IND})`).addClass( "w3-white" );
+					if( IMG_IND==4 )
+						IMG_IND=1;
 					else
-						IMG_INDEX++;
+						IMG_IND++;
+					TIMER = setTimeout( SLIDE_IMAGE, 4000 );
 				});
 			}
-			setInterval( SLIDE_IMAGE, 4000 );
+			
+			$(document).on( "click", ".demo", function(){
+				var IND = $(this).attr( "SLIDE_TO" );
+				IMG_IND=IND;
+				SLIDE_IMAGE();
+			} );
+			
+			$(document).on( "click", ".next", function(){
+				SLIDE_IMAGE();
+			} );
+			
+			$(document).on( "click", ".prev", function(){
+				if( IMG_IND==2 )
+					IMG_IND=4;
+				else if(IMG_IND==1)
+					IMG_IND=3;
+				else
+					IMG_IND-=2;
+				SLIDE_IMAGE();
+			} );
+			
+			
 		</script>
-	</head>
-	<body class="txt-font-sans">
-		<div class="w3-content w3-display-container" id="SLIDER_1">
-			<img src="images/bg1.jpg" />
-			<img src="images/bg2.jpg" class="w3-display-middle" />
-			<img src="images/bg3.jpg" class="w3-display-middle" />
-			<img src="images/bg4.jpg" class="w3-display-middle" />
-			<button class="w3-display-left w3-jumbo w3-button w3-red">&lt;</button>
-			<button class="w3-display-right w3-jumbo w3-button w3-red ">&gt;</button>
-		</div>
 	</body>
 </html>
