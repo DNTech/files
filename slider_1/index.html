@@ -1,34 +1,64 @@
 <html>
 	<head>
 		<link href='css/w3.css' rel="stylesheet" />
+		<script src="js/jquery.js"></script>
 		<style>
 			#SLIDER_1>img{
 				width:100%;
 			}
+			.mySlides:not(.active){display:none}
+			.w3-left, .w3-right, .w3-badge {cursor:pointer}
+			.w3-badge {height:13px;width:13px;padding:0}
 		</style>
-		<script src="js/jquery.js"></script>
-		<script>
-			var IMG_INDEX = 1;
-			function SLIDE_IMAGE(){
-				$( `#SLIDER_1>img` ).slideUp(500, function(){
-					$( `#SLIDER_1>img:nth-child(${IMG_INDEX})` ).fadeIn(500);
-					if( IMG_INDEX==4 )
-						IMG_INDEX=1;
-					else
-						IMG_INDEX++;
-				});
-			}
-			setInterval( SLIDE_IMAGE, 4000 );
-		</script>
 	</head>
 	<body class="txt-font-sans">
-		<div class="w3-content w3-display-container" id="SLIDER_1">
-			<img src="images/bg1.jpg" />
-			<img src="images/bg2.jpg" class="w3-display-middle" />
-			<img src="images/bg3.jpg" class="w3-display-middle" />
-			<img src="images/bg4.jpg" class="w3-display-middle" />
-			<button class="w3-display-left w3-jumbo w3-button w3-red">&lt;</button>
-			<button class="w3-display-right w3-jumbo w3-button w3-red ">&gt;</button>
-		</div>
+
+<div class="w3-content w3-display-container" style="max-width:800px">
+  <img class="mySlides active" src="images/bg1.jpg" style="width:100%">
+  <img class="mySlides" src="images/bg2.jpg" style="width:100%">
+  <img class="mySlides" src="images/bg3.jpg" style="width:100%">
+  <img class="mySlides" src="images/bg4.jpg" style="width:100%">
+  <div class="w3-center w3-container w3-section w3-large w3-text-white w3-display-bottommiddle" style="width:100%">
+    <div class="w3-left w3-hover-text-khaki" onclick="prev()">&#10094;</div>
+    <div class="w3-right w3-hover-text-khaki" onclick="next()">&#10095;</div>
+    <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="SlideImageTo(1)"></span>
+    <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="SlideImageTo(2)"></span>
+    <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="SlideImageTo(3)"></span>
+    <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="SlideImageTo(4)"></span>
+  </div>
+</div>
+
+<script>
+
+var IMG_INDEX =2;
+var SLIDE_TIMEOUT = setTimeout( SlideImageTo, 4000 );
+function SlideImageTo(IND){
+	clearInterval( SLIDE_TIMEOUT );
+	IMG_INDEX = IND ? IND : IMG_INDEX;
+	$(".mySlides").fadeOut(400).promise().done(function(){
+		console.log(IMG_INDEX);
+		$(`.mySlides:nth-child(${IMG_INDEX})`).fadeIn(400);
+		if( IMG_INDEX==4 )
+			IMG_INDEX = 1;
+		else
+			IMG_INDEX ++;
+		SLIDE_TIMEOUT = setTimeout( SlideImageTo, 4000 );
+	});
+}
+
+function next(){
+	SlideImageTo(IMG_INDEX++);
+}
+
+function prev(){
+	if(IMG_INDEX==4){
+		IMG_INDEX=1;
+	}	
+	else{
+	SlideImageTo(IMG_INDEX--);}
+}
+
+
+</script>
 	</body>
 </html>
