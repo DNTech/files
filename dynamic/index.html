@@ -1,0 +1,71 @@
+<html>
+	<head>
+		<link href="css/w3.css" rel="stylesheet" />
+		<link href="fa/css/fa.css" rel="stylesheet" />
+		<style>
+			#mySlider{
+				width : 800px;
+			}
+			.slides{
+				width:  100%;
+			}
+			.slides:not(.active){
+				display: none;
+			}
+			.w3-badge{
+				width:15px;
+				height:15px;
+				padding:0px;
+				background:transparent;
+			}
+		</style>
+		<script src="js/jquery.js"></script>
+	</head>
+	<body>
+		<div class="w3-content w3-display-container" id="mySlider">
+			<img src="images/bg1.jpg" class="slides active"/>
+			<img src="images/bg2.jpg" class="slides" />
+			<img src="images/bg3.jpg" class="slides" />
+			<img src="images/bg4.jpg" class="slides" />
+			<button class="w3-button w3-display-left w3-xlarge w3-red">&lt;</button>
+			<button class="w3-button w3-display-right w3-xlarge w3-red" id="next">&gt;</button>
+			<div class="w3-display-bottommiddle">
+				<span class="w3-badge w3-border nav w3-border-white w3-white"></span>
+				<span class="w3-badge w3-border nav w3-border-white"></span>
+				<span class="w3-badge w3-border nav w3-border-white"></span>
+				<span class="w3-badge w3-border nav w3-border-white"></span>
+			</div>
+		</div>
+	</body>
+	
+	<script>
+		var IND = 2;
+		var TIMER;
+		$(document).ready( function(){
+			TIMER = setTimeout( slideImage, 6000 );
+		} );
+		
+		$(document).on( "click", "#next", function(){
+			slideImage();
+		} );
+		
+		function slideImage(){
+			clearInterval( TIMER );
+			$(".slides").fadeOut().promise().done( function(){
+				var imgs = $(".slides");
+				$(imgs[IND-1]).fadeIn();
+				var navs = $(".nav");
+				$(navs).removeClass( "w3-white" );
+				$( navs[IND-1] ).addClass( "w3-white" );
+				if( IND==4 )
+				IND = 1;
+				else
+				IND++;
+				TIMER = setTimeout( slideImage, 6000 );
+			} );
+		}
+		
+		
+	</script>
+	
+</html>

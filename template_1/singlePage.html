@@ -1,0 +1,65 @@
+<html>
+	<head>
+		<link href="css/w3.css" rel="stylesheet" />
+		<link href="fa/css/fa.css" rel="stylesheet" />
+		<script src="js/jquery.js"></script>
+	<style>
+		.pageDiv:not(.active){
+			display : none;
+		}
+	</style>
+	<script>
+		$( document ).on( "click", ".menuBtn", function(){
+			var id = $(this).attr("target");
+			$(".menuBtn").removeClass("w3-blue");
+			$(this).addClass("w3-blue");
+			$(".pageDiv").fadeOut().promise().done(function(){
+				$(id).fadeIn();
+			});
+		} );
+	</script>
+	</head>
+	<body>
+	<br/>
+		<div class="w3-container">
+			<div class="w3-row-padding">
+				<div class="w3-col l3 m3">
+					<div class="w3-padding w3-light-gray">
+					<div class="w3-bar-block">
+						<div class="w3-bar-item w3-wide w3-border-bottom">
+							MENU
+						</div>
+						<button class="w3-bar-item w3-button w3-blue menuBtn" target="#homeDiv">
+							Home
+						</button>
+						<button class="w3-bar-item w3-button menuBtn" target="#aboutDiv">
+							About Us
+						</button>
+						<button class="w3-bar-item w3-button menuBtn" target="#contactDiv">
+							Contact Us
+						</button>
+						<button class="w3-bar-item w3-button menuBtn" target="#downloadDiv">
+							Download
+						</button>
+					</div>
+					</div>
+				</div>
+				<div class="w3-col l9 m9">
+					<div class="w3-padding w3-light-gray pageDiv active" id="homeDiv">
+						<h1>Home Division</h1>
+					</div>
+					<div class="w3-padding w3-light-gray pageDiv" id="aboutDiv">
+						<h1>About Us Division</h1>
+					</div>
+					<div class="w3-padding w3-light-gray pageDiv" id="contactDiv">
+						<h1>Contact Us Division</h1>
+					</div>
+					<div class="w3-padding w3-light-gray pageDiv" id="downloadDiv">
+						<h1>Download Division</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
+

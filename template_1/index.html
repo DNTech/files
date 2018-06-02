@@ -1,0 +1,134 @@
+<html>
+	<head>
+		<link href="css/w3.css" rel="stylesheet" />
+		<link href="fa/css/fa.css" rel="stylesheet" />
+		<script src="js/jquery.js"></script>
+	<style>
+		.brand_bg{
+			background : rgba( 0, 0, 0, 0.6 )
+		}
+	</style>
+	<script>
+		$(document).on( "click", "#scrollToTop", function(){
+			$("html,body").animate({
+				scrollTop : 0
+			}, 2000, "swing");
+		} );
+		$(document).on( "click", "a[href^='#']", function(ev){
+			ev.preventDefault();
+			var id = $(this).attr("href");
+			var top = $(id).offset().top;
+			$("body,html").animate({
+				scrollTop : top
+			},1000, "swing");
+		} );
+	</script>
+	</head>
+	<body>
+		<div class="w3-bar w3-padding w3-white w3-card w3-wide w3-top">
+			<a href="" class="w3-bar-item w3-button">
+				<b>BR</b> Architects
+			</a>
+			<a href="contact.html" class="w3-bar-item w3-button w3-right">
+				Contact
+			</a>
+			<a href="" class="w3-bar-item w3-button w3-right">
+				About
+			</a>
+			<a href="#projectSection" class="w3-bar-item w3-button w3-right">
+				Projects
+			</a>
+		</div>
+		<div class="w3-display-container">
+			<img src="images/architect.jpg" width="100%" height="100%" />
+			<span class="w3-display-middle w3-xxxlarge w3-text-white">
+				<b class="w3-padding brand_bg">BR</b> Architects
+			</span>
+		</div>
+<div class="w3-container" id="projectSection">
+<br/><br/>
+	<p class="w3-xlarge">Projects</p>
+	<hr/>
+	<div class="w3-row">
+		<div class="w3-col l3 m3">
+			<div class="w3-display-container w3-margin">
+				<img src="images/house5.jpg" class="w3-block"/>
+				<b class="w3-display-topleft w3-padding w3-black">Summer House</b>
+			</div>
+		</div>
+		<div class="w3-col l3 m3">
+			<div class="w3-display-container w3-margin">
+				<img src="images/house5.jpg" class="w3-block"/>
+				<b class="w3-display-topleft w3-padding w3-black">Summer House</b>
+			</div>
+		</div>
+		<div class="w3-col l3 m3">
+			<div class="w3-display-container w3-margin">
+				<img src="images/house5.jpg" class="w3-block"/>
+				<b class="w3-display-topleft w3-padding w3-black">Summer House</b>
+			</div>
+		</div>
+		<div class="w3-col l3 m3">
+			<div class="w3-display-container w3-margin">
+				<img src="images/house5.jpg" class="w3-block"/>
+				<b class="w3-display-topleft w3-padding w3-black">Summer House</b>
+			</div>
+		</div>
+		<div class="w3-col l3 m3">
+			<div class="w3-display-container w3-margin">
+				<img src="images/house5.jpg" class="w3-block"/>
+				<b class="w3-display-topleft w3-padding w3-black">Summer House</b>
+			</div>
+		</div>
+		<div class="w3-col l3 m3">
+			<div class="w3-display-container w3-margin">
+				<img src="images/house5.jpg" class="w3-block"/>
+				<b class="w3-display-topleft w3-padding w3-black">Summer House</b>
+			</div>
+		</div>
+		<div class="w3-col l3 m3">
+			<div class="w3-display-container w3-margin">
+				<img src="images/house5.jpg" class="w3-block"/>
+				<b class="w3-display-topleft w3-padding w3-black">Summer House</b>
+			</div>
+		</div>
+		<div class="w3-col l3 m3">
+			<div class="w3-display-container w3-margin">
+				<img src="images/house5.jpg" class="w3-block"/>
+				<b class="w3-display-topleft w3-padding w3-black">Summer House</b>
+			</div>
+		</div>
+	</div>
+</div>
+<br/><br/>
+<br/><br/>
+<br/><br/>
+<br/><br/>
+<br/><br/>
+<br/><br/>
+<br/><br/>
+<br/><br/>
+<br/><br/>
+<br/><br/>
+<br/><br/>
+<br/><br/>
+<br/><br/>
+<br/><br/>
+<br/><br/>
+<br/><br/>
+<br/><br/>
+<br/><br/>
+<br/><br/>
+<br/><br/>
+<br/><br/>
+<br/><br/>
+<br/><br/>
+<br/><br/>
+<br/><br/>
+<br/><br/>
+<button class="w3-button w3-red" id="scrollToTop">
+	Scroll To Top
+</button>
+	</body>
+</html>
+
