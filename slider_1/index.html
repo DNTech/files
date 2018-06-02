@@ -1,5 +1,6 @@
 <html>
 	<head>
+<<<<<<< HEAD
 		<link href='css/w3.css' rel="stylesheet" />
 		<script src="js/jquery.js"></script>
 		<style>
@@ -60,5 +61,46 @@ function prev(){
 
 
 </script>
+=======
+		<link href="css/w3.css" rel="stylesheet" />
+		<link href="fa/css/fa.css" rel="stylesheet" />
+		<script src="js/jquery.js"></script>
+	</head>
+	<body class="w3-padding">
+		<input type="text" placeholder="Enter Name" id="name"/>
+		<input type="text" placeholder="Enter Course" id="course"/>
+		<input type="text" placeholder="Enter Roll" id="roll"/>
+		<button id="addStudent">Add Student</button>
+		<button id="removeStudent">Remove Student</button>
+		<br/>
+		<br/>
+		<table class="w3-table w3-border" border="1" id="studentTable">
+			<tr class="w3-red">
+				<th>Student Name</th>
+				<th>Student Course</th>
+				<th>Student Roll</th>
+			</tr>
+		</table>
+>>>>>>> a9aea2d63cb43d28dc175f99c39a80ea421f6b52
 	</body>
+	<script>
+		$(document).on( "click", "#addStudent", function(){
+			var name = $("#name").val();
+			var course = $("#course").val();
+			var roll = $("#roll").val();
+			var tr = $("<tr/>");
+			$(tr).append( [
+				$("<td/>").text(name),
+				$("<td/>").text(course),
+				$("<td/>").text(roll)
+			] );
+			$("#studentTable").append(tr);
+		} );
+		
+		$(document).on( "click", "#removeStudent", function(){
+			$("#studentTable tr:last-child").remove();
+		} );
+	</script>
+	
 </html>
+
