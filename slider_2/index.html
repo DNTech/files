@@ -1,0 +1,46 @@
+<html>
+	<head>
+		<link href="css/w3.css" rel="stylesheet" />
+		<link href="fa/css/fa.css" rel="stylesheet" />
+		<link href="owl/assets/owl.carousel.min.css" rel="stylesheet" />
+		<link href="owl/assets/owl.theme.default.min.css" rel="stylesheet" />
+		<script src="js/jquery.js"></script>
+		<script src="owl/owl.carousel.min.js"></script>
+	</head>
+	<body>
+		<div class="owl-carousel owl-theme owl-loaded">
+			<div class="item w3-display-container">
+				<img src="images/bg1.jpg" class="w3-block" height="100%" />
+				<b class="w3-display-bottomleft w3-padding w3-black w3-margin">This is Image one</b>
+			</div>
+			<div class="item w3-display-container">
+				<img src="images/bg2.jpg" class="w3-block" height="100%" />
+				<b class="w3-display-bottomleft w3-padding w3-black w3-margin">This is Image one</b>
+			</div>
+			<div class="item w3-display-container">
+				<img src="images/bg3.jpg" class="w3-block" height="100%" />
+				<b class="w3-display-bottomleft w3-padding w3-black w3-margin">This is Image one</b>
+			</div>
+			<div class="item w3-display-container">
+				<img src="images/bg4.jpg" class="w3-block" height="100%" />
+				<b class="w3-display-bottomleft w3-padding w3-black w3-margin">This is Image one</b>
+			</div>
+		</div>
+	</body>
+	<script>
+		$(document).ready( function(){
+			$(".owl-carousel").owlCarousel({
+				items : 1,
+				loop : true,
+				center : true,
+				nav : true,
+				dots : true,
+				autoplay : true,
+				fluidSpeed : true,
+				autoplaySpeed : true,
+				
+			});
+		} );
+	</script>
+</html>
+

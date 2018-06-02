@@ -1,80 +1,43 @@
 <html>
 	<head>
 		<link href="css/w3.css" rel="stylesheet" />
+		<link href="fa/css/fa.css" rel="stylesheet" />
 		<script src="js/jquery.js"></script>
-		<style>
-			.w3-display-container{
-				max-width:800px;
-			}
-			.mySlides{
-				width:100%;
-				display:none;
-			}
-			.active{
-				display:block;
-			}
-			.w3-badge{
-				height:13px;
-				width:13px;
-				padding:0px;
-			}
-		</style>
 	</head>
-	<body>
-		<div class="w3-content w3-display-container w3-light-gray">
-			<img src="images/bg1.jpg" class="mySlides active" />
-			<img src="images/bg2.jpg" class="mySlides" />
-			<img src="images/bg3.jpg" class="mySlides" />
-			<img src="images/bg4.jpg" class="mySlides" />
-			<button class="w3-display-left w3-text-white w3-large w3-button prev">&lt;</button>
-			<button class="w3-display-right w3-text-white w3-large w3-button next">&gt;</button>
-			<div class="w3-display-bottommiddle w3-center" style="width:100%;">
-				<span class="w3-badge demo w3-border w3-transparent w3-hover-white w3-white" SLIDE_TO='1'></span>
-				<span class="w3-badge demo w3-border w3-transparent w3-hover-white" SLIDE_TO='2'></span>
-				<span class="w3-badge demo w3-border w3-transparent w3-hover-white" SLIDE_TO='3'></span>
-				<span class="w3-badge demo w3-border w3-transparent w3-hover-white" SLIDE_TO='4'></span>
-			</div>
-		</div>
-		
-		<script>
-			var IMG_IND = 2;
-			var TIMER = setTimeout( SLIDE_IMAGE, 4000 );
-			function SLIDE_IMAGE(){
-				console.log( IMG_IND );
-				clearInterval( TIMER );
-				$(".mySlides").fadeOut().promise().done(function(){
-					$(`.mySlides:nth-child(${IMG_IND})`).fadeIn();
-					$(`.demo`).removeClass( "w3-white" );
-					$(`.demo:nth-of-type(${IMG_IND})`).addClass( "w3-white" );
-					if( IMG_IND==4 )
-						IMG_IND=1;
-					else
-						IMG_IND++;
-					TIMER = setTimeout( SLIDE_IMAGE, 4000 );
-				});
-			}
-			
-			$(document).on( "click", ".demo", function(){
-				var IND = $(this).attr( "SLIDE_TO" );
-				IMG_IND=IND;
-				SLIDE_IMAGE();
-			} );
-			
-			$(document).on( "click", ".next", function(){
-				SLIDE_IMAGE();
-			} );
-			
-			$(document).on( "click", ".prev", function(){
-				if( IMG_IND==2 )
-					IMG_IND=4;
-				else if(IMG_IND==1)
-					IMG_IND=3;
-				else
-					IMG_IND-=2;
-				SLIDE_IMAGE();
-			} );
-			
-			
-		</script>
+	<body class="w3-padding">
+		<input type="text" placeholder="Enter Name" id="name"/>
+		<input type="text" placeholder="Enter Course" id="course"/>
+		<input type="text" placeholder="Enter Roll" id="roll"/>
+		<button id="addStudent">Add Student</button>
+		<button id="removeStudent">Remove Student</button>
+		<br/>
+		<br/>
+		<table class="w3-table w3-border" border="1" id="studentTable">
+			<tr class="w3-red">
+				<th>Student Name</th>
+				<th>Student Course</th>
+				<th>Student Roll</th>
+			</tr>
+		</table>
 	</body>
+	<script>
+		$(document).on( "click", "#addStudent", function(){
+			var name = $("#name").val();
+			var course = $("#course").val();
+			var roll = $("#roll").val();
+			var tr = $("<tr/>");
+			$(tr).append( [
+				$("<td/>").text(name),
+				$("<td/>").text(course),
+				$("<td/>").text(roll)
+			] );
+			$("#studentTable").append(tr);
+		} );
+		
+		$(document).on( "click", "#removeStudent", function(){
+			$("#studentTable tr:last-child").remove();
+		} );
+	</script>
+	
 </html>
+
